@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ExamMapper">
+  <resultMap id="BaseResultMap" type="com.bean.Exam">
+    <result column="examid" jdbcType="INTEGER" property="examid" />
+    <result column="examnum" jdbcType="VARCHAR" property="examnum" />
+    <result column="examsubject" jdbcType="VARCHAR" property="examsubject" />
+    <result column="examtime" jdbcType="DATE" property="examtime" />
+    <result column="deptid" jdbcType="INTEGER" property="deptid" />
+    <result column="majorid" jdbcType="INTEGER" property="majorid" />
+    <result column="classid" jdbcType="INTEGER" property="classid" />
+    <result column="examcount" jdbcType="INTEGER" property="examcount" />
+    <result column="examstate" jdbcType="VARCHAR" property="examstate" />
+  </resultMap>
+  <insert id="insert" parameterType="com.bean.Exam">
+    insert into exam (examid, examnum, examsubject, 
+      examtime, deptid, majorid, 
+      classid, examcount, examstate
+      )
+    values (#{examid,jdbcType=INTEGER}, #{examnum,jdbcType=VARCHAR}, #{examsubject,jdbcType=VARCHAR}, 
+      #{examtime,jdbcType=DATE}, #{deptid,jdbcType=INTEGER}, #{majorid,jdbcType=INTEGER}, 
+      #{classid,jdbcType=INTEGER}, #{examcount,jdbcType=INTEGER}, #{examstate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bean.Exam">
+    insert into exam
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="examid != null">
+        examid,
+      </if>
+      <if test="examnum != null">
+        examnum,
+      </if>
+      <if test="examsubject != null">
+        examsubject,
+      </if>
+      <if test="examtime != null">
+        examtime,
+      </if>
+      <if test="deptid != null">
+        deptid,
+      </if>
+      <if test="majorid != null">
+        majorid,
+      </if>
+      <if test="classid != null">
+        classid,
+      </if>
+      <if test="examcount != null">
+        examcount,
+      </if>
+      <if test="examstate != null">
+        examstate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="examid != null">
+        #{examid,jdbcType=INTEGER},
+      </if>
+      <if test="examnum != null">
+        #{examnum,jdbcType=VARCHAR},
+      </if>
+      <if test="examsubject != null">
+        #{examsubject,jdbcType=VARCHAR},
+      </if>
+      <if test="examtime != null">
+        #{examtime,jdbcType=DATE},
+      </if>
+      <if test="deptid != null">
+        #{deptid,jdbcType=INTEGER},
+      </if>
+      <if test="majorid != null">
+        #{majorid,jdbcType=INTEGER},
+      </if>
+      <if test="classid != null">
+        #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="examcount != null">
+        #{examcount,jdbcType=INTEGER},
+      </if>
+      <if test="examstate != null">
+        #{examstate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
